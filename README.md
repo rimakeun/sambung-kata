@@ -42,8 +42,8 @@ Cari kata berdasarkan awalan, akhiran, atau huruf yang terkandung. Tandai kata y
 
 ```bash
 # Clone repository
-git clone https://github.com/verssache/sambungkata.git
-cd sambungkata
+git clone https://github.com/verssache/sambung-kata.git
+cd sambung-kata
 
 # Jalankan server
 python server.py
