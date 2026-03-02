@@ -953,7 +953,7 @@
 
                         <div class="divider"></div>
 
-                        <h2>Ringkasan</h2>
+                        <h2>Summary</h2>
                         <div class="stats-grid">
                             <div class="stat">
                                 <div class="label">Total Words</div>
@@ -984,7 +984,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                             </svg>
-                            <input type="text" id="searchInput" placeholder="Ketik awalan / akhiran / bagian kata..."
+                            <input type="text" id="searchInput" placeholder="Type prefix / suffix / part of a word..."
                                 autocomplete="off" spellcheck="false" />
                         </div>
                     </div>
@@ -1062,16 +1062,16 @@
         }
 
         const TRAP_SUGGESTIONS = [
-            { suffix: "z", label: "z — hampir ga ada kata awalan z" },
-            { suffix: "x", label: "x — nyaris mustahil" },
-            { suffix: "f", label: "f — pilihan dikit" },
-            { suffix: "v", label: "v — jarang banget" },
-            { suffix: "q", label: "q — ga ada di KBBI" },
-            { suffix: "za", label: "za — susah nyambung" },
-            { suffix: "zi", label: "zi — bikin pusing" },
-            { suffix: "zu", label: "zu — mati kutu" },
+            { suffix: "z", label: "z — almost no words start with z" },
+            { suffix: "x", label: "x — nearly impossible" },
+            { suffix: "f", label: "f — very few options" },
+            { suffix: "v", label: "v — extremely rare" },
+            { suffix: "q", label: "q — not found in the dictionary" },
+            { suffix: "za", label: "za — hard to continue" },
+            { suffix: "zi", label: "zi — mind-twisting" },
+            { suffix: "zu", label: "zu — dead end" },
             { suffix: "ks", label: "ks — tricky" },
-            { suffix: "nz", label: "nz — hampir impossible" },
+            { suffix: "nz", label: "nz — almost impossible" },
         ];
 
         function showTrapDialog() {
@@ -1079,21 +1079,21 @@
             overlay.className = "confirm-overlay";
             overlay.innerHTML = `
         <div class="confirm-box trap-dialog">
-          <h3>🪤 Atur Trap Suffixes</h3>
-          <p>Kata dengan akhiran ini bakal diprioritasin di hasil pencarian biar lawan susah nyambung.</p>
+          <h3>🪤 Set Trap Suffixes</h3>
+          <p>Words with these endings will be prioritized in search results to make it harder for opponents to continue.</p>
           <div class="trap-tags" id="trapTags"></div>
           <div class="trap-input-row">
-            <input type="text" id="trapInput" placeholder="ketik suffix, misal: z" autocomplete="off" spellcheck="false" />
+            <input type="text" id="trapInput" placeholder="type suffix, e.g.: z" autocomplete="off" spellcheck="false" />
             <button class="success-btn" onclick="addTrapFromInput()">+</button>
           </div>
           <div class="input-error" id="trapError"></div>
           <div class="trap-suggestions">
-            <p>💡 Saran suffix jebakan:</p>
+            <p>💡 Suggested trap suffixes:</p>
             <div class="trap-sug-list" id="trapSugList"></div>
           </div>
           <div class="btn-row">
-            <button class="cancel-btn" onclick="this.closest('.confirm-overlay').remove()">Tutup</button>
-            <button class="danger-btn" onclick="clearAllTraps()">Hapus Semua</button>
+            <button class="cancel-btn" onclick="this.closest('.confirm-overlay').remove()">Close</button>
+            <button class="danger-btn" onclick="clearAllTraps()">Delete All</button>
           </div>
         </div>
       `;
@@ -1117,7 +1117,7 @@
             if (!container) return;
             if (trapSuffixes.length === 0) {
                 container.innerHTML =
-                    '<span style="color:var(--text-dim);font-size:0.8rem;">Belum ada trap suffix...</span>';
+                    '<span style="color:var(--text-dim);font-size:0.8rem;">No trap suffix yet...</span>';
                 return;
             }
             container.innerHTML = trapSuffixes
@@ -1278,17 +1278,17 @@
                     return;
                 }
                 if (!/^[a-z]+$/.test(w)) {
-                    err.textContent = "Huruf a-z aja, tanpa spasi/simbol";
+                    err.textContent = "Letters a–z only, no spaces or symbols";
                     btn.disabled = true;
                     return;
                 }
                 if (w.length < 3) {
-                    err.textContent = "Minimal 3 letters";
+                    err.textContent = "Minimum 3 letters";
                     btn.disabled = true;
                     return;
                 }
                 if (allWords.includes(w)) {
-                    err.textContent = "Kata udah ada di database";
+                    err.textContent = "Word must already exist in the database";
                     btn.disabled = true;
                     return;
                 }
@@ -1667,7 +1667,7 @@
         <div class="state-msg">
           <div class="emoji">🎮</div>
           <h3>Ready!</h3>
-          <p>Type letters above to start searching<br/><span style="font-size:0.75rem;color:var(--text-dim)">Klik kata = tandain terpakai &nbsp;|&nbsp; 🗑 = hapus dari database</span></p>
+          <p>Type letters above to start searching<br/><span style="font-size:0.75rem;color:var(--text-dim)">Click a word = mark as used &nbsp;|&nbsp; 🗑 = remove from database</span></p>
         </div>
       `;
         }
@@ -1681,9 +1681,9 @@
                 btn.setAttribute("aria-selected", isActive ? "true" : "false");
             });
             const placeholders = {
-                prefix: 'Ketik awalan kata... (misal: "men")',
-                suffix: 'Ketik akhiran kata... (misal: "si")',
-                contains: 'Ketik letters yang terkandung... (misal: "ang")',
+                prefix: 'Type word prefix... (e.g., "men")',
+                suffix: 'Type word suffix... (e.g., "si")',
+                contains: 'Type contained letters... (e.g., "ang")',
             };
             searchInput.placeholder = placeholders[mode] || "";
             renderResults();
