@@ -1,6 +1,9 @@
 # 🎮 Sambung Kata — Cheatsheet
 
+# 🎮 Last Letter — Cheatsheet
+
 > Cheatsheet tool untuk game **Sambung Kata** dengan database 71.000+ kata Bahasa Indonesia dari KBBI.
+> Cheatsheet tool untuk game **Last Letter** dengan database 1.057.099+ kata Bahasa Inggris.
 
 Cari kata berdasarkan awalan, akhiran, atau huruf yang terkandung. Tandai kata yang sudah terpakai, hapus kata yang tidak valid, dan jebak lawan dengan fitur **Trap**.
 
@@ -42,7 +45,7 @@ Cari kata berdasarkan awalan, akhiran, atau huruf yang terkandung. Tandai kata y
 
 ```bash
 # Clone repository
-git clone https://github.com/verssache/sambung-kata.git
+git clone https://github.com/rimakeun/sambung-kata
 cd sambung-kata
 
 # Jalankan server
@@ -59,10 +62,15 @@ Buka browser ke **[http://localhost:8000](http://localhost:8000)** — selesai!
 
 ```
 sambungkata/
-├── index.html      # Single-page app (HTML + CSS + JS, semua dalam satu file)
-├── server.py       # Dev server dengan API untuk modifikasi words.json
-├── words.json      # Database 71.000+ kata Bahasa Indonesia (sorted array)
-└── README.md
+├── index.html        # Landing page (pilih ID / EN)
+├── icon.jpg          # Icon yang dipakai landing + halaman ID/EN
+├── id/
+│   ├── index.html    # App versi Bahasa Indonesia
+│   └── words.json    # Database kata Indonesia (JSON array, sorted)
+├── en/
+│   ├── index.html    # App versi English
+│   └── words.json    # Database kata English (JSON array, sorted)
+└── README.md         # Dokumentasi
 ```
 
 ---
