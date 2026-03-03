@@ -86,6 +86,24 @@
             min-width: 220px;
         }
 
+        .back-btn {
+            border: none;
+            background: transparent;
+            color: rgba(255,255,255,.75);
+            font-size: 1.4rem;
+            font-weight: 900;
+            cursor: pointer;
+            padding: 6px 8px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .15s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,.08);
+            color: #fff;
+        }
+
         .logo {
             width: 42px;
             height: 42px;
@@ -922,6 +940,7 @@
         <div class="shell">
             <header class="topbar">
                 <div class="brand">
+                    <a href="../" class="back-btn" aria-label="Back to home">← Back</a>
                     <div class="icon-wrap">
                         <img src="../lt.png" alt="Icon">
                     </div>
